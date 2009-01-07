@@ -36,3 +36,16 @@ or look at some code here:
 
 </body>
 </html>
+
+== ROADMAP ==
+
+0.6 Refactor some code (css hash, use data function of jQuery)
+0.7 Implement keys for changing opacity
+0.8 Implement a basic ruler
+0.9 Make it work in all Browsers (even the really filthy ones)
+1.0 No bugs, no tickets left
+
+== COPYRIGHT ==
+
+All code is © 2009, 9elements and is released under the MIT License.
+Feel free to email us with any questions or feedback.
