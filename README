@@ -40,9 +40,7 @@ or look at some code here:
 
 == ROADMAP ==
 
-0.5 Refactor some code (css hash, use data function of jQuery)
-0.6 Make logging optional
-0.7 Implement keys for changing opacity
+0.7 Implement keys for changing opacity, use data function of jQuery
 0.8 Implement a basic ruler
 0.9 Make it work in all Browsers (even the really filthy ones)
 1.0 No bugs, no tickets left
@@ -54,3 +52,5 @@ Feel free to email us with any questions or feedback.
 
 == CHANGELOG ==
 
+* Made it working with IE7
+* Made logging optional
