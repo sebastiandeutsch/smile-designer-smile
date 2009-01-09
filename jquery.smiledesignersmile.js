@@ -7,21 +7,21 @@
  */
 jQuery.fn.smileDesignerSmile = function(imgUrl, options) {
 	var defaults = {
-		backgroundPosition : '0px 0px',
-		opacity : '0.5'
+		backgroundPosition	: '0px 0px',
+		opacity				: '0.5',
+		logging				: true
 	};
 	
 	var opts = jQuery.extend(defaults, options);
-	
 	var dummy = jQuery(this);
 	
 	dummy.css('position','absolute');
 	dummy.css('top','0');
 	dummy.css('left','0');
-	dummy.css('background-color','transparent');
-	dummy.css('background-image', 'url(' + imgUrl + ')');
-	dummy.css('background-position', opts.backgroundPosition );
-	dummy.css('background-repeat','no-repeat');
+	dummy.css('backgroundColor','transparent');
+	dummy.css('backgroundImage', 'url(' + imgUrl + ')');
+	dummy.css('backgroundPosition', opts.backgroundPosition );
+	dummy.css('backgroundRepeat','no-repeat');
 	dummy.css('width','100%');
 	dummy.css('height','100%');
 	dummy.css('opacity', opts.opacity);
@@ -59,7 +59,7 @@ jQuery.fn.smileDesignerSmile = function(imgUrl, options) {
 				dx =  0; dy =  1;
 			}
 			
-			var oldpos = dummy.css('background-position');
+			var oldpos = dummy.css('backgroundPosition');
 			
 			var cx = oldpos.split(' ')[0];
 			var cy = oldpos.split(' ')[1];
@@ -71,8 +71,11 @@ jQuery.fn.smileDesignerSmile = function(imgUrl, options) {
 			var y = oy+dy;
 			
 			var newpos = x + 'px ' + y + 'px';
-			dummy.css('background-position', newpos);
-			console.log(newpos);
+			dummy.css('backgroundPosition', newpos);
+			
+			if(opts.logging) {
+				if(console != undefined) console.log(newpos);
+			}
 		}
 	});
 	
@@ -96,7 +99,7 @@ jQuery.fn.smileDesignerSmile = function(imgUrl, options) {
 	dummy.mousemove(function(e) {
 		if(!dummy.is_hidden) {
 			if(dummy.pressed) {
-				var oldpos = dummy.css('background-position');
+				var oldpos = dummy.css('backgroundPosition');
 				
 				var cx = oldpos.split(' ')[0];
 				var cy = oldpos.split(' ')[1];
@@ -111,8 +114,11 @@ jQuery.fn.smileDesignerSmile = function(imgUrl, options) {
 				dummy.startY = e.clientY;
 				
 				var newpos = x + 'px ' + y + 'px';
-				dummy.css('background-position', newpos);
-				console.log(newpos);
+				dummy.css('backgroundPosition', newpos);
+
+				if(opts.logging) {
+					if(console != undefined) console.log(newpos);
+				}
 			}
 		}
 	});
