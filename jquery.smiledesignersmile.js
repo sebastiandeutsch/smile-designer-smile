@@ -6,6 +6,7 @@
  *
  */
 jQuery.fn.smileDesignerSmile = function(imgUrl, options) {
+	// get defaults
 	var defaults = {
 		backgroundPosition	: '0px 0px',
 		opacity				: '0.5',
@@ -13,6 +14,22 @@ jQuery.fn.smileDesignerSmile = function(imgUrl, options) {
 	};
 	
 	var opts = jQuery.extend(defaults, options);
+
+	// check for firebug
+	if (!window.console || !window.console.firebugVersion)
+	{
+	        var names       =  ["log", "debug", "info", "warn", "error",
+								"assert", "dir", "dirxml", "group", "groupEnd", "time", "timeEnd",
+								"count", "trace", "profile", "profileEnd"];
+	        window.console  =  {};
+	        for (i in names)
+	        {
+	                window.console[names[i]] = function() {};
+	        }
+
+	}
+	
+	// get the object
 	var dummy = jQuery(this);
 	
 	dummy.css('position','absolute');
@@ -26,8 +43,11 @@ jQuery.fn.smileDesignerSmile = function(imgUrl, options) {
 	dummy.css('height','100%');
 	dummy.css('opacity', opts.opacity);
 	dummy.css('display','none');
-	dummy.css('-moz-user-select','none');
 	
+	// make it unselectable
+	dummy.css('MozUserSelect','none');		// FF
+	dummy.css('KhtmlUserSelect','none');	// SF + CHROME
+	dummy.attr('unselectable', 'on')		// IE + OPERA
 	
 	dummy.is_hidden = true;
 	
@@ -74,7 +94,7 @@ jQuery.fn.smileDesignerSmile = function(imgUrl, options) {
 			dummy.css('backgroundPosition', newpos);
 			
 			if(opts.logging) {
-				if(console != undefined) console.log(newpos);
+				console.log(newpos);
 			}
 		}
 	});
@@ -117,7 +137,7 @@ jQuery.fn.smileDesignerSmile = function(imgUrl, options) {
 				dummy.css('backgroundPosition', newpos);
 
 				if(opts.logging) {
-					if(console != undefined) console.log(newpos);
+					console.log(newpos);
 				}
 			}
 		}
