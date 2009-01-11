@@ -9,7 +9,7 @@ git clone git://github.com/sebastiandeutsch/smile-designer-smile.git
 h1. USAGE
 
 Just *DOUBLE CLICK* on the screen and the underlaying layout will be displayed opaque so you can visually match your result through drag and drop. To finetune you can even use your cursor keys. To hide the layout do a double click again. 
-Every position will be logged through console.log, so you can adjust the initialisation for the next page refresh (see optional hash).
+Every position will be logged through console.log, so you can adjust the initialisation for the next page refresh (see optional hash). If you need more information you can continue reading on the "projects homepage":http://blog.9elements.com/?page_id=54.
 
 h1. IMPLEMENTATION
 
