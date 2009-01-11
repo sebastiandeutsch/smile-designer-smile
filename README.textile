@@ -55,7 +55,7 @@ h1. ROADMAP
 
 h1. COPYRIGHT
 
-All code is © 2009, 9elements and is released under the MIT License.
+All code is © 2009, "9elements":http://9elements.com and is released under the MIT License.
 Feel free to email us with any questions or feedback.
 
 h1. CHANGELOG
