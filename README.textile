@@ -1,15 +1,15 @@
-== INSTALL ==
+h1. INSTALL
 
 Get it from github through git
 
 git clone git://github.com/sebastiandeutsch/smile-designer-smile.git
 
-== USAGE ==
+h1. USAGE
 
 Just *DOUBLE CLICK* on the screen and the underlaying layout will be displayed opaque so you can visually match your result through drag and drop. To finetune you can even use your cursor keys. To hide the layout do a double click again. 
 Every position will be logged through console.log, so you can adjust the initialisation for the next page refresh (see optional hash).
 
-== IMPLEMENTATION ==
+h1. IMPLEMENTATION
 
 Just include an empty div in your Layout and inititalize the Plugin through
 
@@ -17,7 +17,7 @@ jQuery('#dummy').smileDesignerSmile(pathToDraftPng, optionalArguments)
 
 or look at some code here:
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<code><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
   <script type="text/javascript" src="/javascript/jquery/jquery-x.x.x.min.js"></script>
@@ -37,20 +37,21 @@ or look at some code here:
 
 </body>
 </html>
-
-== ROADMAP ==
+</code>
+	
+h1. ROADMAP
 
 0.7 Implement keys for changing opacity, use data function of jQuery
 0.8 Implement a basic ruler
 0.9 Make it work in all Browsers (even the really filthy ones)
 1.0 No bugs, no tickets left
 
-== COPYRIGHT ==
+h1. COPYRIGHT
 
 All code is © 2009, 9elements and is released under the MIT License.
 Feel free to email us with any questions or feedback.
 
-== CHANGELOG ==
+h1. CHANGELOG
 
 * Made it working with IE7
 * Made logging optional
