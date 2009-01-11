@@ -2,7 +2,9 @@ h1. INSTALL
 
 Get it from github through git
 
-git clone git://github.com/sebastiandeutsch/smile-designer-smile.git
+<code>
+	git clone git://github.com/sebastiandeutsch/smile-designer-smile.git
+</code>
 
 h1. USAGE
 
@@ -13,30 +15,33 @@ h1. IMPLEMENTATION
 
 Just include an empty div in your Layout and inititalize the Plugin through
 
-jQuery('#dummy').smileDesignerSmile(pathToDraftPng, optionalArguments)
+<code>
+	jQuery('#dummy').smileDesignerSmile(pathToDraftPng, optionalArguments)
+</code>
 
 or look at some code here:
 
-<code><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-<head>
-  <script type="text/javascript" src="/javascript/jquery/jquery-x.x.x.min.js"></script>
-  <script type="text/javascript" src="/javascript/jquery/jquery.smiledesignersmile.js"></script>
-</head>
-<body>
+<code>
+	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+	<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+	<head>
+	  <script type="text/javascript" src="/javascript/jquery/jquery-x.x.x.min.js"></script>
+	  <script type="text/javascript" src="/javascript/jquery/jquery.smiledesignersmile.js"></script>
+	</head>
+	<body>
 
-...
+	...
 
-<div id="dummy" style=""></div>
+	<div id="dummy" style=""></div>
 
-<script>
-	jQuery(document).ready(function() {
-		jQuery('#dummy').smileDesignerSmile('my_awesomelayout', { backgroundPosition : "-100px 100px", opacity : "0.7"} );
-	});
-</script>
+	<script>
+		jQuery(document).ready(function() {
+			jQuery('#dummy').smileDesignerSmile('my_awesomelayout', { backgroundPosition : "-100px 100px", opacity : "0.7"} );
+		});
+	</script>
 
-</body>
-</html>
+	</body>
+	</html>
 </code>
 	
 h1. ROADMAP
