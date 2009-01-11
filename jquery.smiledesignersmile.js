@@ -1,5 +1,5 @@
 /*
- * smileDesignerSmile Plugin V0.6
+ * smileDesignerSmile Plugin V0.6.0
  *
  * Copyright (c) 2009 Sebastian Deutsch <sebastian.deutsch@9elements.com>
  * Licensed under the MIT (MIT-LICENSE.txt) license.
