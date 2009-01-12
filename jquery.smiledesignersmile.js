@@ -1,5 +1,5 @@
 /*
- * smileDesignerSmile Plugin V0.7.1
+ * smileDesignerSmile Plugin V0.7.2
  *
  * Copyright (c) 2009 Sebastian Deutsch <sebastian.deutsch@9elements.com>
  * Licensed under the MIT (MIT-LICENSE.txt) license.
@@ -36,6 +36,13 @@ jQuery.fn.smileDesignerSmile = function(imgUrl, options) {
 	// get the object
 	var dummy = jQuery(this);
 	
+	// if we are on the document let's create a helper div
+	if( dummy.get(0) == document ) {
+		jQuery('<div id="smd_helper_div__"></div').appendTo('#foo');
+		dummy = jQuery('#smd_helper_div__');
+	}
+	
+	// set some styles
 	dummy.css('position','absolute');
 	dummy.css('top','0px');
 	dummy.css('left','0px'); 

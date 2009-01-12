@@ -32,6 +32,14 @@ or look at some code here:
 
 ...
 
+<script>
+	jQuery(document).ready(function() {
+		jQuery(document).smileDesignerSmile('my_awesomelayout', { backgroundPosition : "-100px 100px", opacity : "0.7"} );
+	});
+</script>
+
+or you can specify the div by yourself
+
 <div id="dummy" style=""></div>
 
 <script>
@@ -46,7 +54,6 @@ or look at some code here:
 	
 h1. ROADMAP
 
-* 0.7.2 remove empty div depency
 * 0.8.0 Implement keys for changing opacity
 * 0.9.0 Implement a basic ruler
 * 1.0.0 No bugs, no tickets left
@@ -58,6 +65,7 @@ Feel free to email us with any questions or feedback.
 
 h1. CHANGELOG
 
+* Removed empty div depency
 * Made it working in the really filthy IE6
 * Replaced object hijacking with <code>data</code> function of jQuery
 * Made it working with IE7
