@@ -46,9 +46,7 @@ or look at some code here:
 	
 h1. ROADMAP
 
-* 0.7.0 use <code>data</code> function of jQuery
-* 0.7.1 remove empty div depency
-* 0.7.2 Make it work in IE6
+* 0.7.2 remove empty div depency
 * 0.8.0 Implement keys for changing opacity
 * 0.9.0 Implement a basic ruler
 * 1.0.0 No bugs, no tickets left
@@ -60,5 +58,7 @@ Feel free to email us with any questions or feedback.
 
 h1. CHANGELOG
 
+* Made it working in the really filthy IE6
+* Replaced object hijacking with <code>data</code> function of jQuery
 * Made it working with IE7
 * Made logging optional

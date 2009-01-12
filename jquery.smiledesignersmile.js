@@ -1,16 +1,20 @@
 /*
- * smileDesignerSmile Plugin V0.6.0
+ * smileDesignerSmile Plugin V0.7.1
  *
  * Copyright (c) 2009 Sebastian Deutsch <sebastian.deutsch@9elements.com>
  * Licensed under the MIT (MIT-LICENSE.txt) license.
  *
  */
 jQuery.fn.smileDesignerSmile = function(imgUrl, options) {
+	// detect the really filthy browser
+	var IE6 = false /*@cc_on || @_jscript_version < 5.7 @*/;
+	
 	// get defaults
 	var defaults = {
 		backgroundPosition	: '0px 0px',
 		opacity				: '0.5',
-		logging				: true
+		logging				: true,
+		displayOnLoad		: false
 	};
 	
 	var opts = jQuery.extend(defaults, options);
@@ -33,49 +37,61 @@ jQuery.fn.smileDesignerSmile = function(imgUrl, options) {
 	var dummy = jQuery(this);
 	
 	dummy.css('position','absolute');
-	dummy.css('top','0');
-	dummy.css('left','0');
+	dummy.css('top','0px');
+	dummy.css('left','0px'); 
 	dummy.css('backgroundColor','transparent');
 	dummy.css('backgroundImage', 'url(' + imgUrl + ')');
 	dummy.css('backgroundPosition', opts.backgroundPosition );
 	dummy.css('backgroundRepeat','no-repeat');
-	dummy.css('width','100%');
-	dummy.css('height','100%');
-	dummy.css('opacity', opts.opacity);
-	dummy.css('display','none');
+	
+	// set width and height and opacity
+	if(IE6) {
+		dummy.css('width', screen.width);
+		dummy.css('height', screen.height);
+		dummy.css('filter', 'Alpha(opacity=' + Math.floor(opts.opacity*100) + ')');
+	} else {
+		dummy.css('width','100%');
+		dummy.css('height','100%');
+		dummy.css('opacity', opts.opacity);
+	}
+
+	// do we want to show 	
+	if(!opts.displayOnLoad) {
+		dummy.css('display','none');
+	}
 	
 	// make it unselectable
 	dummy.css('MozUserSelect','none');		// FF
 	dummy.css('KhtmlUserSelect','none');	// SF + CHROME
 	dummy.attr('unselectable', 'on')		// IE + OPERA
 	
-	dummy.is_hidden = true;
-	
+	dummy.data('is_hidden', true);
+
 	jQuery(document).dblclick(function() {
-		if(dummy.is_hidden) {
+		if(dummy.data('is_hidden')) {
 			dummy.show();
-			dummy.is_hidden = !dummy.is_hidden;
+			dummy.data('is_hidden', !dummy.data('is_hidden'));
 		} else {
 			dummy.hide();
-			dummy.is_hidden = !dummy.is_hidden;
+			dummy.data('is_hidden', !dummy.data('is_hidden'));
 		}
 	});
 	
 	$(document).keyup(function(event){
-		if(!dummy.is_hidden) {
+		if(!dummy.data('is_hidden')) {
 			var dx = 0;
 			var dy = 0;
 			
-			if(event.keyCode == 37) { /* cursor left */
+			if(event.keyCode == 37) { // cursor left
 				dx = -1; dy =  0;
 			}
-			if(event.keyCode == 38) { /* cursor top */
+			if(event.keyCode == 38) { // cursor top
 				dx =  0; dy = -1;
 			}
-			if(event.keyCode == 39) { /* cursor right */
+			if(event.keyCode == 39) { // cursor right
 				dx =  1; dy =  0;
 			}
-			if(event.keyCode == 40) { /* cursor down */
+			if(event.keyCode == 40) { // cursor down
 				dx =  0; dy =  1;
 			}
 			
@@ -83,7 +99,7 @@ jQuery.fn.smileDesignerSmile = function(imgUrl, options) {
 			
 			var cx = oldpos.split(' ')[0];
 			var cy = oldpos.split(' ')[1];
-
+			
 			var ox = parseInt(cx.substring(0, cx.length-2));
 			var oy = parseInt(cy.substring(0, cy.length-2));
 												
@@ -98,27 +114,26 @@ jQuery.fn.smileDesignerSmile = function(imgUrl, options) {
 			}
 		}
 	});
-	
-	
+		
 	dummy.mouseup(function(e) {
-		if(!dummy.is_hidden) {
-			dummy.pressed = false;
-			dummy.endX = e.clientX;
-			dummy.endY = e.clientY;
+		if(!dummy.data('is_hidden')) {
+			dummy.data('pressed', false);
+			dummy.data('endX', e.clientX);
+			dummy.data('endY', e.clientY);
 		}
 	});
 
 	dummy.mousedown(function(e) {
-		if(!dummy.is_hidden) {
-			dummy.pressed = true;
-			dummy.startX = e.clientX;
-			dummy.startY = e.clientY;
+		if(!dummy.data('is_hidden')) {
+			dummy.data('pressed', true);
+			dummy.data('startX', e.clientX);
+			dummy.data('startY', e.clientY);
 		}
 	});
 	
 	dummy.mousemove(function(e) {
-		if(!dummy.is_hidden) {
-			if(dummy.pressed) {
+		if(!dummy.data('is_hidden')) {
+			if(dummy.data('pressed')) {
 				var oldpos = dummy.css('backgroundPosition');
 				
 				var cx = oldpos.split(' ')[0];
@@ -127,11 +142,11 @@ jQuery.fn.smileDesignerSmile = function(imgUrl, options) {
 				var ox = parseInt(cx.substring(0, cx.length-2));
 				var oy = parseInt(cy.substring(0, cy.length-2));
 									
-				var x = ox- (dummy.startX-e.clientX);
-				var y = oy- (dummy.startY-e.clientY);
+				var x = ox- (dummy.data('startX')-e.clientX);
+				var y = oy- (dummy.data('startY')-e.clientY);
 				
-				dummy.startX = e.clientX;
-				dummy.startY = e.clientY;
+				dummy.data('startX', e.clientX);
+				dummy.data('startY', e.clientY);
 				
 				var newpos = x + 'px ' + y + 'px';
 				dummy.css('backgroundPosition', newpos);
