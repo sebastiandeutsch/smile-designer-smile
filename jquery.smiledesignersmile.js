@@ -38,7 +38,7 @@ jQuery.fn.smileDesignerSmile = function(imgUrl, options) {
 	
 	// if we are on the document let's create a helper div
 	if( dummy.get(0) == document ) {
-		jQuery('<div id="smd_helper_div__"></div').appendTo('#foo');
+		jQuery('<div id="smd_helper_div__"></div').appendTo('body');
 		dummy = jQuery('#smd_helper_div__');
 	}
 	
@@ -58,7 +58,7 @@ jQuery.fn.smileDesignerSmile = function(imgUrl, options) {
 		dummy.css('filter', 'Alpha(opacity=' + Math.floor(opts.opacity*100) + ')');
 	} else {
 		dummy.css('width','100%');
-		dummy.css('height','100%');
+		dummy.css('height','250%');
 		dummy.css('opacity', opts.opacity);
 	}
 
